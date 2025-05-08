@@ -83,7 +83,7 @@ func main() {
 	}
 
 	m := model{list: list.New(items, list.NewDefaultDelegate(), 0, 0)}
-	m.list.Title = "My Fave Things"
+	m.list.Title = "やること"
 
 	p := tea.NewProgram(m, tea.WithAltScreen())
 
