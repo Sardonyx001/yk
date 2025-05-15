@@ -11,21 +11,21 @@ import (
 
 var docStyle = lipgloss.NewStyle().Margin(1, 2)
 
-type status int
+type Status int
 
 const (
-	Ongoing status = iota
+	Ongoing Status = iota
 	Done
 )
 
-type item struct {
-	status      status
+type Task struct {
+	status      Status
 	title, desc string
 }
 
-func (i item) Title() string       { return i.title }
-func (i item) Description() string { return i.desc }
-func (i item) FilterValue() string { return i.title }
+func (t Task) Title() string       { return t.title }
+func (t Task) Description() string { return t.desc }
+func (t Task) FilterValue() string { return t.title }
 
 type model struct {
 	list list.Model
@@ -57,29 +57,29 @@ func (m model) View() string {
 
 func main() {
 	items := []list.Item{
-		item{status: Ongoing, title: "Raspberry Pi’s", desc: "I have ’em all over my house"},
-		item{status: Ongoing, title: "Nutella", desc: "It's good on toast"},
-		item{status: Ongoing, title: "Bitter melon", desc: "It cools you down"},
-		item{status: Ongoing, title: "Nice socks", desc: "And by that I mean socks without holes"},
-		item{status: Ongoing, title: "Eight hours of sleep", desc: "I had this once"},
-		item{status: Ongoing, title: "Cats", desc: "Usually"},
-		item{status: Ongoing, title: "Plantasia, the album", desc: "My plants love it too"},
-		item{status: Ongoing, title: "Pour over coffee", desc: "It takes forever to make though"},
-		item{status: Ongoing, title: "VR", desc: "Virtual reality...what is there to say?"},
-		item{status: Ongoing, title: "Noguchi Lamps", desc: "Such pleasing organic forms"},
-		item{status: Ongoing, title: "Linux", desc: "Pretty much the best OS"},
-		item{status: Ongoing, title: "Business school", desc: "Just kidding"},
-		item{status: Ongoing, title: "Pottery", desc: "Wet clay is a great feeling"},
-		item{status: Ongoing, title: "Shampoo", desc: "Nothing like clean hair"},
-		item{status: Ongoing, title: "Table tennis", desc: "It’s surprisingly exhausting"},
-		item{status: Ongoing, title: "Milk crates", desc: "Great for packing in your extra stuff"},
-		item{status: Ongoing, title: "Afternoon tea", desc: "Especially the tea sandwich part"},
-		item{status: Ongoing, title: "Stickers", desc: "The thicker the vinyl the better"},
-		item{status: Ongoing, title: "20° Weather", desc: "Celsius, not Fahrenheit"},
-		item{status: Ongoing, title: "Warm light", desc: "Like around 2700 Kelvin"},
-		item{status: Ongoing, title: "The vernal equinox", desc: "The autumnal equinox is pretty good too"},
-		item{status: Ongoing, title: "Gaffer’s tape", desc: "Basically sticky fabric"},
-		item{status: Ongoing, title: "Terrycloth", desc: "In other words, towel fabric"},
+		Task{status: Ongoing, title: "Raspberry Pi’s", desc: "I have ’em all over my house"},
+		Task{status: Ongoing, title: "Nutella", desc: "It's good on toast"},
+		Task{status: Ongoing, title: "Bitter melon", desc: "It cools you down"},
+		Task{status: Ongoing, title: "Nice socks", desc: "And by that I mean socks without holes"},
+		Task{status: Ongoing, title: "Eight hours of sleep", desc: "I had this once"},
+		Task{status: Ongoing, title: "Cats", desc: "Usually"},
+		Task{status: Ongoing, title: "Plantasia, the album", desc: "My plants love it too"},
+		Task{status: Ongoing, title: "Pour over coffee", desc: "It takes forever to make though"},
+		Task{status: Ongoing, title: "VR", desc: "Virtual reality...what is there to say?"},
+		Task{status: Ongoing, title: "Noguchi Lamps", desc: "Such pleasing organic forms"},
+		Task{status: Ongoing, title: "Linux", desc: "Pretty much the best OS"},
+		Task{status: Ongoing, title: "Business school", desc: "Just kidding"},
+		Task{status: Ongoing, title: "Pottery", desc: "Wet clay is a great feeling"},
+		Task{status: Ongoing, title: "Shampoo", desc: "Nothing like clean hair"},
+		Task{status: Ongoing, title: "Table tennis", desc: "It’s surprisingly exhausting"},
+		Task{status: Ongoing, title: "Milk crates", desc: "Great for packing in your extra stuff"},
+		Task{status: Ongoing, title: "Afternoon tea", desc: "Especially the tea sandwich part"},
+		Task{status: Ongoing, title: "Stickers", desc: "The thicker the vinyl the better"},
+		Task{status: Ongoing, title: "20° Weather", desc: "Celsius, not Fahrenheit"},
+		Task{status: Ongoing, title: "Warm light", desc: "Like around 2700 Kelvin"},
+		Task{status: Ongoing, title: "The vernal equinox", desc: "The autumnal equinox is pretty good too"},
+		Task{status: Ongoing, title: "Gaffer’s tape", desc: "Basically sticky fabric"},
+		Task{status: Ongoing, title: "Terrycloth", desc: "In other words, towel fabric"},
 	}
 
 	m := model{list: list.New(items, list.NewDefaultDelegate(), 0, 0)}
